@@ -688,7 +688,7 @@
 					<h3>Counter</h3>
 					<div style="overflow:auto;">
 						<div style="float:left;width: 60%;">
-							<pre style="max-width: 90%" class="fragment current-only">
+							<pre style="max-width: 90%">
 								<code data-trim class="cshtml">
 									<script type="text/template">
 @using AngleSharp.Dom
@@ -716,8 +716,40 @@
 	}
 }
 </script></code>
-									</pre>
-									<pre style="max-width: 90%" class="fragment">
+									</pre>								
+						</div>
+						<div style="float:right;width:40%">
+							<pre style="overflow:auto">
+								<code data-trim data-noescape  class="razor">
+									<script type="text/template">
+<h1>Counter</h1>
+
+<p class="some-text">Current count: @_currentCounter</p>
+      
+<button id="increment-button"
+        class="btn btn-primary"
+        @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCounter { get; set; }
+
+    private void IncrementCount()
+    {
+        _currentCounter++;
+    }
+}
+</script>
+								</code>
+							</pre>
+						</div>
+					</div>
+
+				</section>
+				<section data-transition="none">
+					<h3>Counter</h3>
+					<div style="overflow:auto;">
+						<div style="float:left;width: 60%;">
+							<pre style="max-width: 90%">
 										<code data-trim class="razor">
 											<script type="text/template">
 @using AngleSharp.Dom
@@ -785,6 +817,127 @@
 						<li class="fragment">If your structure changes your test becomes invalid as well.</li>
 						<li class="fragment">Well that's bad!</li>
 					</ul>
+				</section>
+				<section data-transition="none">
+					<h3>Counter</h3>
+					<div style="overflow:auto;">
+						<div style="float:left;width: 60%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml">
+									<script type="text/template">
+@using AngleSharp.Dom
+@using Bunit
+@using Xunit
+@using bUnit.Tutorial.Shared
+
+@inherits Bunit.TestContext
+
+@code {
+
+	[Fact]
+	public void IncrementCounterByOneWhenButtonClicked()
+	{
+		// Render our component including all lifecycle events
+		var cut = Render(@<Counter />);
+
+		// Find the button via CSS selector and click it
+		IElement button = cut.Find("#increment-button");
+		button.Click();
+
+		// Assert the markup
+		var pElement = cut.Find(".some-text");
+		pElement.MarkupMatches(@<p diff:ignore>Current count: 1</p>);
+	}
+}
+</script></code>
+									</pre>
+						</div>
+						<div style="float:right;width:40%">
+							<pre style="overflow:auto">
+								<code data-trim data-noescape  class="razor">
+									<script type="text/template">
+<h1>Counter</h1>
+
+<p class="some-text">Current count: @_currentCounter</p>
+      
+<button id="increment-button"
+        class="btn btn-primary"
+        @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCounter { get; set; }
+
+    private void IncrementCount()
+    {
+        _currentCounter++;
+    }
+}
+</script>
+								</code>
+							</pre>
+						</div>
+					</div>
+				</section>
+				<section data-transition="none">
+					<h3>Counter</h3>
+					<div style="overflow:auto;">
+						<div style="float:left;width: 60%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml">
+									<script type="text/template">
+@using AngleSharp.Dom
+@using Bunit
+@using Xunit
+@using bUnit.Tutorial.Shared
+
+@inherits Bunit.TestContext
+
+@code {
+
+	[Fact]
+	public void CounterShouldBeSixWhenClickedAndInitIsFive()
+	{
+		// Render our component including all lifecycle events
+		var cut = Render(@<Counter CurrentCount="5" />);
+
+		// Find the button via CSS selector and click it
+		IElement button = cut.Find("#increment-button");
+		button.Click();
+
+		// Assert the markup
+		var pElement = cut.Find(".some-text");
+		pElement.MarkupMatches(@<p diff:ignore>Current count: 6</p>);
+	}
+}
+</script></code>
+									</pre>
+						</div>
+						<div style="float:right;width:40%">
+							<pre style="overflow:auto">
+								<code data-trim data-noescape  class="razor">
+									<script type="text/template">
+<h1>Counter</h1>
+
+<p class="some-text">Current count: @CurrentCounter</p>
+      
+<button id="increment-button"
+        class="btn btn-primary"
+        @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public int CurrentCounter { get; set; }
+
+    private void IncrementCount()
+    {
+        CurrentCounter++;
+    }
+}
+</script>
+								</code>
+							</pre>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section>
