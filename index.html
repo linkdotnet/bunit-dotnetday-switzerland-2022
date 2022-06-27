@@ -72,18 +72,31 @@
 			color: #FF8A65;
 			padding-right: 20px;
 		}
-		.line { display: block; }
-/* on focused: switch to solarized light */
-.line.focus { background: #fdf6e3; color: #657b83; }
-.line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
-.reveal .slides section .fragment.current-only {
-    opacity: 1;
-    visibility: visible;
-    display: none;
-  }
-  .reveal .slides section .fragment.current-only.current-fragment {
-    display: block;
-  }
+
+		.line {
+			display: block;
+		}
+
+		/* on focused: switch to solarized light */
+		.line.focus {
+			background: #fdf6e3;
+			color: #657b83;
+		}
+
+		.line.focus .hljs-comment,
+		.line.focus .hljs-quote {
+			color: #93a1a1;
+		}
+
+		.reveal .slides section .fragment.current-only {
+			opacity: 1;
+			visibility: visible;
+			display: none;
+		}
+
+		.reveal .slides section .fragment.current-only.current-fragment {
+			display: block;
+		}
 	</style>
 </head>
 
@@ -343,18 +356,24 @@
 						</div>
 					</div>
 					<ul style="display: block">
-						<li class="fragment current-only" data-code-focus="1-99" data-code-block="1">Tests written in razor syntax</li>
-					<li class="fragment current-only" data-code-focus="1-3" data-code-block="1">Imports for <b>bUnit</b>, xUnit and the component</li>
-					<li class="fragment current-only" data-code-focus="5" data-code-block="1">TestContext is from bUnit which brings the functionality</li>
-					<li class="fragment current-only" data-code-focus="9-12" data-code-block="1">We can write our unit tests as we used to</li>
+						<li class="fragment current-only" data-code-focus="1-99" data-code-block="1">Tests written in
+							razor syntax</li>
+						<li class="fragment current-only" data-code-focus="1-3" data-code-block="1">Imports for
+							<b>bUnit</b>, xUnit and the component
+						</li>
+						<li class="fragment current-only" data-code-focus="5" data-code-block="1">TestContext is from
+							bUnit which brings the functionality</li>
+						<li class="fragment current-only" data-code-focus="9-12" data-code-block="1">We can write our
+							unit tests as we used to</li>
 					</ul>
 				</section>
-		
+
 				<section data-transition="none">
 					<h3>Counter - Why bUnit</h3>
-					<div >
+					<div>
 						<div style="float:left;width: 60% ;position: relative;">
-							<img src="assets/completion.jpg" style="position: absolute; top: 178px; right: 470px; z-index: 100;"/>
+							<img src="assets/completion.jpg"
+								style="position: absolute; top: 178px; right: 470px; z-index: 100;" />
 							<pre style="max-width: 50%;min-width: 50%;width:50%">
 								<code data-trim data-noescape class="razor">
 @using Bunit
@@ -401,7 +420,8 @@
 						</div>
 					</div>
 					<ul class="fragment current-only" data-code-focus="13" data-code-block="1">
-						<li>Every Blazor component can be simply created via new() but component doesn't know how to render itself</li>
+						<li>Every Blazor component can be simply created via new() but component doesn't know how to
+							render itself</li>
 						<li>Does not help as only SetParametersAsync is exposed, the rest comes from System.Object</li>
 						<li>Doesn't help with life cycle events</li>
 					</ul>
@@ -473,9 +493,13 @@
 						</div>
 					</div>
 					<ul style="display: block">
-						<li class="fragment current-only" data-code-focus="14" data-code-block="1">Render the component via Blazor Pipeline including all lifecycle events</li>
-						<li class="fragment current-only" data-code-focus="1,17-18" data-code-block="1">Like Selenium or Playwright: Get an element via css selector. Find returns as an AngleSharp.Dom.IElement. Super convenient. More later.</li>
-						<li class="fragment current-only" data-code-focus="21-22" data-code-block="1">Compare the markup</li>
+						<li class="fragment current-only" data-code-focus="14" data-code-block="1">Render the component
+							via Blazor Pipeline including all lifecycle events</li>
+						<li class="fragment current-only" data-code-focus="1,17-18" data-code-block="1">Like Selenium or
+							Playwright: Get an element via css selector. Find returns as an AngleSharp.Dom.IElement.
+							Super convenient. More later.</li>
+						<li class="fragment current-only" data-code-focus="21-22" data-code-block="1">Compare the markup
+						</li>
 					</ul>
 				</section>
 				<section>
@@ -484,7 +508,7 @@
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
 					<div>
-						<div  style="float:left;width:45%">
+						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
 									<script type="text/template">
@@ -504,12 +528,12 @@
 								</code>
 							</pre>
 						</div>
-					</div>				
+					</div>
 				</section>
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
 					<div>
-						<div  style="float:left;width:45%">
+						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
 									<script type="text/template">
@@ -527,12 +551,12 @@
 								</code>
 							</pre>
 						</div>
-					</div>				
+					</div>
 				</section>
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
 					<div>
-						<div  style="float:left;width:45%">
+						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
 									<script type="text/template">
@@ -550,7 +574,7 @@
 								</code>
 							</pre>
 						</div>
-					</div>		
+					</div>
 				</section>
 				<section data-transition="none">
 					<h3>Counter</h3>
@@ -716,7 +740,7 @@
 	}
 }
 </script></code>
-									</pre>								
+									</pre>
 						</div>
 						<div style="float:right;width:40%">
 							<pre style="overflow:auto">
@@ -967,9 +991,69 @@
 					<h3>Problems we want to solve with that</h3>
 					<ul>
 						<li>Remove dependencies and tedious setup (e.g. remove JavaScript setup)</li>
-						<li>Easily setup certian situations (e.g. throw exception in child component)</li>
-						<li class="fragment"><b>We don't wanna test 3rd party code - That is not our responsibility</b></li>
+						<li>Easily setup certain situations (e.g. throw exception in child component)</li>
+						<li class="fragment"><b>We don't wanna test 3rd party code - That is not our responsibility</b>
+						</li>
 					</ul>
+				</section>
+				<section>
+					<h3>The general idea in tests</h3>
+					<p>We want to transform this:</p>
+					<pre>
+						<code data-trim class="cshtml">
+							<script type="text/template">
+<Foo>
+	<Bar />
+</Foo>
+							</script>
+						</code>
+					</pre>
+					<div class="fragment">
+						<p>Into this:</p>
+						<pre>
+							<code data-trim class="cshtml">
+								<script type="text/template">
+<Foo>
+	<BarSubstitute /> <!-- We can leverage this for stubing as well as mocking -->
+</Foo>
+								</script>
+							</code>
+						</pre>
+					</div>
+				</section>
+				<section>
+					<div style="overflow:auto;">
+						<div style="float:left;width: 70%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml">
+									<script type="text/template">
+@inherits TestContext
+
+@code {
+	[Fact]
+	public void ShouldNotHaveBarInFoo()
+	{
+		ComponentFactories.AddStub<Bar>();
+		Render(@<Foo></Foo>);
+	}
+}
+									</script>
+								</code>
+							</pre>
+						</div>
+						<div style="float:right;width: 30%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml">
+									<script type="text/template">
+<Foo>
+	<!-- Substitute this -->
+	<BarSubstitute />
+</Foo>
+									</script>
+								</code>
+							</pre>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section>
@@ -989,8 +1073,8 @@
 							href="https://steven-giesel.com/blogPost/a0790df4-ba49-4346-83e7-5c3c651d594e">https://steven-giesel.com/</a>
 					</li>
 				</ul>
-				<img style="position: fixed; left: 0; top:200px" src="assets/qr-slides.png"/>
-				<img style="position: fixed; right: 0; top:200px" src="assets/qr-stevengiesel.png"/>
+				<img style="position: fixed; left: 0; top:200px" src="assets/qr-slides.png" />
+				<img style="position: fixed; right: 0; top:200px" src="assets/qr-stevengiesel.png" />
 			</section>
 		</div>
 	</div>
@@ -1014,14 +1098,15 @@
 			dependencies: [
 				{ src: 'https://jlhg.github.io/highlight-pack/highlight.pack.js' },
 				{
-				src: 'plugin/reveal-code-focus.js',
-				async: true,
-				callback: function() {
-					RevealCodeFocus();
-				}
+					src: 'plugin/reveal-code-focus.js',
+					async: true,
+					callback: function () {
+						RevealCodeFocus();
+					}
 				}
 			]
 		});
 	</script>
 </body>
+
 </html>
