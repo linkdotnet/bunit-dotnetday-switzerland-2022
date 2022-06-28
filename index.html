@@ -1025,17 +1025,71 @@
 					<div style="overflow:auto;">
 						<div style="float:left;width: 70%;">
 							<pre style="max-width: 90%">
-								<code data-trim class="cshtml">
+								<code data-trim class="cshtml-razor">
 									<script type="text/template">
+@using Bunit
 @inherits TestContext
 
 @code {
 	[Fact]
 	public void ShouldNotHaveBarInFoo()
 	{
+		// Tell bUnit to replace <Bar /> with empty markup
 		ComponentFactories.AddStub<Bar>();
-		Render(@<Foo></Foo>);
-	}
+		
+		// Render our component
+		IRenderedFragment cut = Render(@<Foo></Foo>);
+
+		// Assert that <Bar /> is not part of the render tree
+		cut.HasComponent<Bar>().Should().BeFalse();
+	}   
+}
+									</script>
+								</code>
+							</pre>
+						</div>
+						<div style="float:right;width: 30%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml">
+									<script type="text/template">
+<Foo>
+	<!-- Substitute this -->
+	<BarSubstitute />
+</Foo>
+									</script>
+								</code>
+							</pre>
+						</div>
+					</div>
+					<ul class="current-only fragment" data-code-focus="9,15" data-code-block="1">
+						<li>With <code>ComponentFactories</code> we can tell bUnit to replace &lt;Bar&gt; with empty markup</li>
+						<li>We can check whether or not a component is part of the render tree with <code>HasComponent</code></li>
+					</ul>
+				</section>
+				<section>
+					<div style="overflow:auto;">
+						<div style="float:left;width: 70%;">
+							<pre style="max-width: 90%">
+								<code data-trim class="cshtml-razor">
+									<script type="text/template">
+@using Bunit
+@inherits TestContext
+
+@code {
+	[Fact]
+	public void ShouldNotHaveBarInFoo()
+	{
+		// Tell bUnit to replace <Bar /> with empty markup
+		ComponentFactories.Add<Bar, BarSubstitute>();
+		
+		// Render our component
+		IRenderedFragment cut = Render(@<Foo></Foo>);
+
+		// Assert that <Bar /> is not part of the render tree
+		cut.HasComponent<Bar>().Should().BeFalse();
+		// Assert that <BarSubstitute /> is part of the render tree
+		cut.HasComponent<BarSubstitute>().Should().BeTrue();
+	}   
 }
 									</script>
 								</code>
