@@ -79,8 +79,7 @@
 
 		/* on focused: switch to solarized light */
 		.line.focus {
-			background: #fdf6e3;
-			color: #657b83;
+			background: #949b79;
 		}
 
 		.line.focus .hljs-comment,
@@ -372,8 +371,7 @@
 					<h3>Counter - Why bUnit</h3>
 					<div>
 						<div style="float:left;width: 60% ;position: relative;">
-							<img src="assets/completion.jpg"
-								style="position: absolute; top: 178px; right: 470px; z-index: 100;" />
+
 							<pre style="max-width: 50%;min-width: 50%;width:50%">
 								<code data-trim data-noescape class="razor">
 @using Bunit
@@ -492,14 +490,13 @@
 							</pre>
 						</div>
 					</div>
-					<ul style="display: block">
+					<ul style="float: left;">
 						<li class="fragment current-only" data-code-focus="14" data-code-block="1">Render the component
 							via Blazor Pipeline including all lifecycle events</li>
 						<li class="fragment current-only" data-code-focus="1,17-18" data-code-block="1">Like Selenium or
 							Playwright: Get an element via css selector. Find returns as an AngleSharp.Dom.IElement.
 							Super convenient. More later.</li>
-						<li class="fragment current-only" data-code-focus="21-22" data-code-block="1">Compare the markup
-						</li>
+						<li class="fragment current-only" data-code-focus="21-22" data-code-block="1">Compare the markup</li>
 					</ul>
 				</section>
 				<section>
@@ -507,7 +504,7 @@
 				</section>
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
-					<div>
+					<div style="font-size: 1.2em;">
 						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
@@ -532,7 +529,7 @@
 				</section>
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
-					<div>
+					<div style="font-size: 1.2em;">
 						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
@@ -555,7 +552,7 @@
 				</section>
 				<section>
 					<h3>Question: Are these two markups identical?</h3>
-					<div>
+					<div style="font-size: 1.2em;">
 						<div style="float:left;width:45%">
 							<pre>
 								<code data-trim data-noescape  class="html">
@@ -1003,7 +1000,7 @@
 						<code data-trim class="cshtml">
 							<script type="text/template">
 <Foo>
-	<Bar />
+	<Bar /> <!-- We want to get rid of this -->
 </Foo>
 							</script>
 						</code>
@@ -1022,6 +1019,7 @@
 					</div>
 				</section>
 				<section>
+					<h3>Create a stub of a component</h3>
 					<div style="overflow:auto;">
 						<div style="float:left;width: 70%;">
 							<pre style="max-width: 90%">
@@ -1061,12 +1059,13 @@
 							</pre>
 						</div>
 					</div>
-					<ul class="current-only fragment" data-code-focus="9,15" data-code-block="1">
-						<li>With <code>ComponentFactories</code> we can tell bUnit to replace &lt;Bar&gt; with empty markup</li>
+					<ul class="fragment" data-code-focus="9,15" data-code-block="1">
+						<li>With <code>ComponentFactories</code> we can tell bUnit to replace &lt;Bar&gt; with another component of our choice markup</li>
 						<li>We can check whether or not a component is part of the render tree with <code>HasComponent</code></li>
 					</ul>
 				</section>
-				<section>
+				<section data-transition="none">
+					<h3>Create a replacement component</h3>
 					<div style="overflow:auto;">
 						<div style="float:left;width: 70%;">
 							<pre style="max-width: 90%">
@@ -1108,6 +1107,11 @@
 							</pre>
 						</div>
 					</div>
+					<ul class="fragment" data-code-focus="9,15" data-code-block="1">
+						<li>With <code>ComponentFactories</code> we can tell bUnit to replace &lt;Bar&gt; with a component of our choice</li>
+						<li>Making some setup easier</code></li>
+						<li>Making some behavior easier to assert</code></li>
+					</ul>
 				</section>
 			</section>
 			<section>
@@ -1146,6 +1150,7 @@
 			width: '100%',
 			history: false,
 			pdfSeparateFragments: true,
+			center: true,
 
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealHighlight, RevealNotes],
@@ -1153,7 +1158,7 @@
 				{ src: 'https://jlhg.github.io/highlight-pack/highlight.pack.js' },
 				{
 					src: 'plugin/reveal-code-focus.js',
-					async: true,
+					async: false,
 					callback: function () {
 						RevealCodeFocus();
 					}
